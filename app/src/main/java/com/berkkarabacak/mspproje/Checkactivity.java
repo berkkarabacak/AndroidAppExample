@@ -86,17 +86,16 @@ String tcnumara;
                 System.out.println("*****************************");
                 System.out.println("*****************************");
                 System.out.println("*****************************");
-                System.out.println(blobItem.toString());
+                CloudBlob blob = (CloudBlob) blobItem;
+                blob.download(new FileOutputStream("C:\\" + blob.getName()));
+                System.out.println(blob.getName());
+
 
                 System.out.println("*****************************");
                 System.out.println("*****************************");
                 System.out.println("*****************************");
                 System.out.println("*****************************");                // If the item is a blob, not a virtual directory.
-                if (blobItem instanceof CloudBlob) {
-                    // Download the item and save it to a file with the same name.
-                    CloudBlob blob = (CloudBlob) blobItem;
-                    blob.download(new FileOutputStream("C:\\mydownloads\\" + blob.getName()));
-                }
+
             }
         }
         catch (Exception e)
