@@ -22,7 +22,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:22.0.0'
-    compile 'com.microsoft.azure:azure-storage:2.1.0'
     compile 'com.fasterxml.jackson.core:jackson-core:2.5.2'
+    compile 'com.microsoft.azure.android:azure-storage-android:0.5.0'
 }
 
