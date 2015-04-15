@@ -63,7 +63,7 @@ public class Azure extends AsyncTask<Void, Void, Void> {
         catch (Exception e)
         {
             // Output the stack trace.
-          e.printStackTrace();
+         // e.printStackTrace();
         }
 
 
