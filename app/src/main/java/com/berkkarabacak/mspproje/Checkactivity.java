@@ -14,7 +14,6 @@ import com.microsoft.azure.storage.blob.ListBlobItem;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 
 
 public class Checkactivity extends ActionBarActivity {
@@ -41,67 +40,40 @@ String tcnumara;
 
         try
         {
-            System.out.println("*****************************");
-
-            System.out.println("*****************************");
-
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-
-            System.out.println("*****************************");
 
 
             // Retrieve storage account from connection-string.
        CloudStorageAccount storageAccount = CloudStorageAccount.parse(ConnectionString);
-          //  System.out.println(ConnectionString);
-            System.out.println(storageAccount.toString()          );
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
 
             // Create the blob client.
             CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-
             // Retrieve reference to a previously created container.
             CloudBlobContainer container = blobClient.getContainerReference("mspproje");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println(container.getName());
+            System.out.println("1//////////////////////1");
+            System.out.println("2\\\\\\\\\\\\\\\\\\\\\\2");
+            System.out.println("3//////////////////////3");
+            System.out.println("4\\\\\\\\\\\\\\\\\\\\\\4");
+            System.out.println(container.exists());
+            System.out.println("5//////////////////////5");
+            System.out.println("6\\\\\\\\\\\\\\\\\\\\\\6");
+            System.out.println("7//////////////////////7");
+            System.out.println("8\\\\\\\\\\\\\\\\\\\\\\8");
 
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
-            System.out.println("*****************************");
+            // Define the path to a local file.
+            final String filePath = "C:\\Users\\Berk\\Desktop\\audi.jpg";
 
-            // Loop through each blob item in the container.
-            for (ListBlobItem blobItem : container.listBlobs()) {
-                System.out.println("*****************************");
-                System.out.println("*****************************");
-                System.out.println("*****************************");
-                System.out.println("*****************************");
-                CloudBlob blob = (CloudBlob) blobItem;
-                blob.download(new FileOutputStream("C:\\" + blob.getName()));
-                System.out.println(blob.getName());
+            // Create or overwrite the "myimage.jpg" blob with contents from a local file.
+            CloudBlockBlob blob = container.getBlockBlobReference("myimage.jpg");
+            File source = new File(filePath);
+            blob.upload(new FileInputStream(source), source.length());
 
 
-                System.out.println("*****************************");
-                System.out.println("*****************************");
-                System.out.println("*****************************");
-                System.out.println("*****************************");                // If the item is a blob, not a virtual directory.
-
-            }
         }
         catch (Exception e)
         {
             // Output the stack trace.
-          //  e.printStackTrace();
+          e.printStackTrace();
         }
 
 
