@@ -10,12 +10,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
     Button   mButton;
     EditText mEdit;
-    String tcnumara;
+    static String tcnumara;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

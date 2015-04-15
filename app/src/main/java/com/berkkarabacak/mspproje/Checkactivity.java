@@ -19,7 +19,7 @@ import java.io.FileInputStream;
 public class Checkactivity extends ActionBarActivity {
 String tcnumara;
 
-
+   static TextView t2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +34,30 @@ String tcnumara;
         TextView t=(TextView)findViewById(R.id.tcnumaraset);
         t.setText(tcnumara);
 
+
+
+
+
         new Azure().execute();
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setContentView(R.layout.checkheartbeat);
+        TextView t=(TextView)findViewById(R.id.tcnumaraset);
+        t.setText(tcnumara);
+        t2=(TextView)findViewById(R.id.currentheartbeat);
+        t2.setText("fdsfsdfsdf");
+
+
+    }
+
+    static public TextView getTextView(){
+        return t2;
     }
 
     }
