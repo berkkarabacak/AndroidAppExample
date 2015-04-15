@@ -3,6 +3,7 @@ package com.berkkarabacak.mspproje;
 import android.os.AsyncTask;
 
 import com.microsoft.azure.storage.CloudStorageAccount;
+import com.microsoft.azure.storage.blob.CloudBlob;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
@@ -11,10 +12,12 @@ import com.microsoft.azure.storage.blob.ListBlobItem;
 import java.io.File;
 import java.io.FileInputStream;
 
+
 /**
  * Created by Berk on 15-Apr-15.
  */
 public class Azure extends AsyncTask<Void, Void, Void> {
+    Integer currentheartbeat;
     public static final String ConnectionString =
             "DefaultEndpointsProtocol=http;"
                     + "AccountName=mspproje;"
@@ -45,20 +48,22 @@ public class Azure extends AsyncTask<Void, Void, Void> {
             System.out.println("7//////////////////////7");
             System.out.println("8\\\\\\\\\\\\\\\\\\\\\\8");
 
-            // Loop over blobs within the container and output the URI to each of them.
-            for (ListBlobItem blobItem : container.listBlobs()) {
-                System.out.println("7//////////////////////7");
-                System.out.println("7//////////////////////7");
-                System.out.println("7//////////////////////7");
+            // Define the path to a local file.
+            final String filePath = "C:\\Users\\Berk\\Desktop\\audi.jpg";
 
-                System.out.println(blobItem.getUri());
-            }
+            // Create or overwrite the "myimage.jpg" blob with contents from a local file.
+           CloudBlockBlob blob = container.getBlockBlobReference("245454.csv");
+            String lastelementdeleted=blob.downloadText().substring(0,blob.downloadText().length()-1);
+
+            currentheartbeat=Integer.parseInt(lastelementdeleted.substring(lastelementdeleted.lastIndexOf(";")+2));
+            System.out.println(currentheartbeat
+            );
 
         }
         catch (Exception e)
         {
             // Output the stack trace.
-            e.printStackTrace();
+          e.printStackTrace();
         }
 
 
