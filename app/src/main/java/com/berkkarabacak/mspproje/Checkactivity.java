@@ -1,6 +1,7 @@
 package com.berkkarabacak.mspproje;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -37,12 +38,13 @@ public class Checkactivity extends ActionBarActivity {
         TextView t = (TextView) findViewById(R.id.tcnumaraset);
         t.setText(tcnumara);
 
+
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         setContentView(R.layout.checkheartbeat);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -52,16 +54,6 @@ public class Checkactivity extends ActionBarActivity {
         t.setText(tcnumara);
 
 
-
-
-
-  //  try {
-    //    Thread.sleep(5000);
-
- //   } catch (Exception e) {
-
-        // asd
-   // }
         UIUpdater mUIUpdater = new UIUpdater(new Runnable() {
             @Override
             public void run() {
@@ -70,6 +62,11 @@ public class Checkactivity extends ActionBarActivity {
             }
         });
         mUIUpdater.startUpdates();
+
+
+
+
+
         UIUpdater mUIUpdater2 = new UIUpdater(new Runnable() {
             @Override
             public void run() {
@@ -77,12 +74,23 @@ public class Checkactivity extends ActionBarActivity {
                     currentheartbeatstring = Integer.toString(currentheartbeat);
                     TextView t2 = (TextView) findViewById(R.id.currentheartbeat);
                     t2.setText(currentheartbeatstring);
+                    }
                 }
-            }
+
         });
         mUIUpdater2.startUpdates();
 
 
+        if (currentheartbeat != null) {
+            if (currentheartbeat > 120) {
+                MediaPlayer high = MediaPlayer.create(Checkactivity.this, R.raw.high);
+                high.start();
+            }
+            if (currentheartbeat < 40) {
+                MediaPlayer low = MediaPlayer.create(Checkactivity.this, R.raw.slow);
+                low.start();
+            }
+        }
 
     }
 
@@ -109,7 +117,6 @@ public class Checkactivity extends ActionBarActivity {
                 // Retrieve reference to a previously created container.
                 CloudBlobContainer container = blobClient.getContainerReference("mspproje");
                 // Define the path to a local file.
-                final String filePath = "C:\\Users\\Berk\\Desktop\\audi.jpg";
 
                 // Create or overwrite the "myimage.jpg" blob with contents from a local file.
                 CloudBlockBlob blob = container.getBlockBlobReference(MainActivity.tcnumara+".csv");
@@ -122,12 +129,8 @@ public class Checkactivity extends ActionBarActivity {
 
         catch (Exception e)
         {
-            // Output the stack trace.
-            // e.printStackTrace();
+            e.printStackTrace();
         }
-
-
-
         return null;
         }
     }

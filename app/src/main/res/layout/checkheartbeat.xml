@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/heartbeat">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Tc kimlik numaranız:     "
+        android:textColor="#FFFFFF"
         android:id="@+id/tcnumara"
         android:layout_gravity="center_horizontal"
         android:layout_alignParentTop="true"
@@ -18,10 +21,11 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/tcnumaraset"
+        android:textColor="#FFFFFF"
+
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/tcnumara"
-        android:layout_marginLeft="42dp"
-        android:layout_marginStart="42dp" />
+        android:layout_toEndOf="@+id/tcnumara" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,22 +33,26 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Şu anki kalp atış hızı :"
         android:id="@+id/textView2"
+        android:textColor="#FFFFFF"
+
+        android:layout_marginTop="46dp"
         android:layout_below="@+id/tcnumaraset"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="28dp" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/currentheartbeat"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="90dp"
         android:textSize="50sp"
-        android:layout_toStartOf="@+id/tcnumaraset"
-         />
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
+        android:textColor="#FFFFFF"
+
+        android:layout_below="@+id/tcnumaraset"
+        android:layout_toRightOf="@+id/tcnumaraset"
+        android:layout_toEndOf="@+id/tcnumaraset"
+        android:layout_marginTop="31dp" />
 
 </RelativeLayout>
